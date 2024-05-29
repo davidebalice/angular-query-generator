@@ -1,0 +1,13 @@
+<div>
+    <h3>Aggiungi Join</h3>
+    <select [(ngModel)]="newJoin.type">
+      <option value="INNER">INNER</option>
+      <option value="LEFT">LEFT</option>
+      <option value="RIGHT">RIGHT</option>
+      <option value="FULL">FULL</option>
+    </select>
+    <input [(ngModel)]="newJoin.table" placeholder="Tabella">
+    <input [(ngModel)]="newJoin.on" placeholder="Condizione ON">
+    <button (click)="addJoin()">Aggiungi Join</button>
+  </div>
+  
