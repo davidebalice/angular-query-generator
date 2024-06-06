@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { QueryGeneratorService } from '../services/query-generator.service';
+import { QueryService } from '../services/query.service';
 
 @Component({
   selector: 'app-sql-preview',
@@ -11,10 +11,10 @@ export class SqlPreviewComponent implements OnInit, OnDestroy {
   query: string = '';
   private querySubscription: Subscription;
 
-  constructor(private queryGeneratorService: QueryGeneratorService) {}
+  constructor(private queryService: QueryService) {}
 
   ngOnInit() {
-    this.querySubscription = this.queryGeneratorService
+    this.querySubscription = this.queryService
       .getQueryObservable()
       .subscribe((query) => {
         this.query = query;

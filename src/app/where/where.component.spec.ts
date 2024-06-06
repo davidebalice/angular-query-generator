@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableSelectorComponent } from './table-selector.component';
+import { WhereComponent } from './where.component';
 
-describe('TableSelectorComponent', () => {
-  let component: TableSelectorComponent;
-  let fixture: ComponentFixture<TableSelectorComponent>;
+describe('WhereComponent', () => {
+  let component: WhereComponent;
+  let fixture: ComponentFixture<WhereComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TableSelectorComponent]
+      declarations: [WhereComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TableSelectorComponent);
+    fixture = TestBed.createComponent(WhereComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,11 @@
+<div>
+  <h3>Aggiungi where</h3>
+  <input [(ngModel)]="newCondition.field" placeholder="Field" />
+  <select [(ngModel)]="newCondition.typeCondition">
+    <option value="=">=</option>
+    <option value="LIKE">LIKE</option>
+  </select>
+
+  <input [(ngModel)]="newCondition.condition" placeholder="Condition" />
+  <button (click)="addWhere()">Aggiungi Where condition</button>
+</div>

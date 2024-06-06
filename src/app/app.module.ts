@@ -6,10 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { TableSelectorComponent } from './table-selector/table-selector.component';
-import { FieldSelectorComponent } from './field-selector/field-selector.component';
-import { JoinManagerComponent } from './join-manager/join-manager.component';
-import { OrderManagerComponent } from './order-manager/order-manager.component';
+import { TableComponent } from './table/table.component';
+import { FieldComponent } from './field/field.component';
+import { JoinComponent } from './join/join.component';
+import { WhereComponent } from './where/where.component';
+import { OrderComponent } from './order/order.component';
 import { SqlPreviewComponent } from './sql-preview/sql-preview.component';
 //import { QueryGeneratorService } from './services/query-generator.service';
 
@@ -24,10 +25,11 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    TableSelectorComponent,
-    FieldSelectorComponent,
-    JoinManagerComponent,
-    OrderManagerComponent,
+    TableComponent,
+    FieldComponent,
+    JoinComponent,
+    WhereComponent,
+    OrderComponent,
     SqlPreviewComponent,
   ],
   //providers: [QueryGeneratorService],

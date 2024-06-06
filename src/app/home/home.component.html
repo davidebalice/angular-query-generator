@@ -1,10 +1,16 @@
 <div class="container">
-  <h1>SQL Query Generator</h1>
+  <h2>SQL Query Generator</h2>
+  <a (click)="onSetTab('table')">table</a>
+  <a (click)="onSetTab('field')">field</a>
+  <a (click)="onSetTab('join')">join</a>
+  <a (click)="onSetTab('where')">where</a>
+  <a (click)="onSetTab('order')">order</a>
   <div class="selectors">
-    <app-table-selector></app-table-selector>
-    <app-field-selector></app-field-selector>
-    <app-join-manager></app-join-manager>
-    <app-order-manager></app-order-manager>
+    <app-table *ngIf="tab === 'table'"></app-table>
+    <app-field *ngIf="tab === 'field'"></app-field>
+    <app-join *ngIf="tab === 'join'"></app-join>
+    <app-where *ngIf="tab === 'where'"></app-where>
+    <app-order *ngIf="tab === 'order'"></app-order>
   </div>
   <div class="preview">
     <app-sql-preview></app-sql-preview>

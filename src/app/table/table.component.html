@@ -1,0 +1,12 @@
+<div>
+  <h3>Seleziona Tabella</h3>
+  <input [(ngModel)]="newTable.name" placeholder="Nome Tabella" />
+  <input [(ngModel)]="newTable.alias" placeholder="Alias Tabella" />
+  <button (click)="addTable()">Aggiungi Tabella</button>
+
+  <div *ngFor="let table of tables">
+    <p>ID: {{ table.alias }}</p>
+    <p>Name: {{ table.name }}</p>
+    <button (click)="onDelete(table.name)">delete</button>
+  </div>
+</div>

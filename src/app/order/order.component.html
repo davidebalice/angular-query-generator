@@ -1,0 +1,9 @@
+<div>
+  <h3>Aggiungi Ordinamento</h3>
+  <input [(ngModel)]="newOrder.field" placeholder="Field" />
+  <select [(ngModel)]="newOrder.direction">
+    <option value="ASC">ASC</option>
+    <option value="DESC">DESC</option>
+  </select>
+  <button (click)="addOrder()">Aggiungi Ordinamento</button>
+</div>

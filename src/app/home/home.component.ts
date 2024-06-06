@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  tab: string = "table";
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -19,5 +19,9 @@ export class HomeComponent implements OnInit {
 
   onLoadServer(id: number){
     this.router.navigate(['/servers', id, 'edit' ],{queryParams: {allowEdit: '1'}});
+  }
+  
+  onSetTab(tab: string){
+    this.tab = tab;
   }
 }

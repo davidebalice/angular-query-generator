@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FieldSelectorComponent } from './field-selector.component';
+import { OrderComponent } from './order.component';
 
-describe('FieldSelectorComponent', () => {
-  let component: FieldSelectorComponent;
-  let fixture: ComponentFixture<FieldSelectorComponent>;
+describe('OrderComponent', () => {
+  let component: OrderComponent;
+  let fixture: ComponentFixture<OrderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FieldSelectorComponent]
+      declarations: [OrderComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FieldSelectorComponent);
+    fixture = TestBed.createComponent(OrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
