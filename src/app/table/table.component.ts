@@ -15,6 +15,16 @@ export class TableComponent implements OnInit, OnDestroy {
 
   constructor(private queryService: QueryService) {}
 
+  refreshTables() {
+    //this.queryService.getTablesObservable();
+    this.subscription = this.queryService.tablesSubject.subscribe(
+      (tables: Table[]) => {
+        this.tables = tables;
+        //this.queryService.getTables();
+      }
+    );
+  }
+
   addTable() {
     this.queryService.addTable(this.newTable);
     this.newTable = { name: '', alias: '' };
@@ -23,15 +33,11 @@ export class TableComponent implements OnInit, OnDestroy {
 
   onDelete(name: string) {
     this.queryService.deleteTable(name);
+    this.refreshTables();
   }
 
   ngOnInit(): void {
-    this.queryService.getTables();
-    this.subscription = this.queryService.tablesSubject.subscribe(
-      (tables: Table[]) => {
-        this.tables = tables;
-      }
-    );
+    this.refreshTables();
   }
 
   ngOnDestroy(): void {

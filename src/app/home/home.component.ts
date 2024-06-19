@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit {
   }
 
   onLoadServers(){
-    this.router.navigate(['/servers']);
+    this.router.navigate(['/nosql']);
   }
 
   onLoadServer(id: number){
-    this.router.navigate(['/servers', id, 'edit' ],{queryParams: {allowEdit: '1'}});
+    this.router.navigate(['/nosql', id, 'edit' ],{queryParams: {allowEdit: '1'}});
   }
   
   onSetTab(tab: string){

@@ -3,7 +3,7 @@
   <input [(ngModel)]="newTable.name" placeholder="Nome Tabella" />
   <input [(ngModel)]="newTable.alias" placeholder="Alias Tabella" />
   <button (click)="addTable()">Aggiungi Tabella</button>
-
+  <hr />
   <div *ngFor="let table of tables">
     <p>ID: {{ table.alias }}</p>
     <p>Name: {{ table.name }}</p>

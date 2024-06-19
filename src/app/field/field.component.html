@@ -1,6 +1,14 @@
 <div>
     <h3>Seleziona Campo</h3>
-    <input [(ngModel)]="newField.table" placeholder="Tabella">
+    <!--input [(ngModel)]="newField.table" placeholder="Tabella"-->
+    <select [(ngModel)]="newField.table">
+      <option *ngFor="let table of tables" [value]="table.alias">{{ table.alias }}</option>
+    </select>
     <input [(ngModel)]="newField.name" placeholder="Campo">
     <button (click)="addField()">Aggiungi Campo</button>
+    <hr />
+    <div *ngFor="let field of fields">
+      <p>ID: {{ field.table }}.{{ field.name }}</p>
+      <button (click)="onDelete(field.table,field.name)">delete</button>
+    </div>
   </div>

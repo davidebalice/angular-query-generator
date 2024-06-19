@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Field } from '../model/field';
 import { Join } from '../model/join';
 import { Order } from '../model/order';
@@ -17,8 +17,8 @@ export class QueryService {
   private orders: Order[] = [];
 
   private querySubject = new BehaviorSubject<string>(this.getQuery());
-  tablesSubject = new Subject<Table[]>();
-  fieldsSubject = new Subject<Field[]>();
+  tablesSubject = new BehaviorSubject<Table[]>(this.tables);
+  fieldsSubject = new BehaviorSubject<Field[]>(this.fields);
 
   constructor() {}
 
@@ -56,6 +56,14 @@ export class QueryService {
 
   getFields() {
     this.fieldsSubject.next(this.fields);
+  }
+
+  deleteField(table: string, name: string) {
+    this.fields = this.fields.filter(
+      (field) => !(field.name === name && field.table === table)
+    );
+    this.fieldsSubject.next(this.fields);
+    this.updateQuery();
   }
 
   addWhere(where: Where) {
