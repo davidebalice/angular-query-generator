@@ -9,6 +9,7 @@ import { QueryService } from '../services/query.service';
 })
 export class SqlPreviewComponent implements OnInit, OnDestroy {
   query: string = '';
+  error: string = 'Insert at least one table and one field';
   private querySubscription: Subscription;
 
   constructor(private queryService: QueryService) {}

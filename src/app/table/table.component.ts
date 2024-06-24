@@ -16,11 +16,9 @@ export class TableComponent implements OnInit, OnDestroy {
   constructor(private queryService: QueryService) {}
 
   refreshTables() {
-    //this.queryService.getTablesObservable();
     this.subscription = this.queryService.tablesSubject.subscribe(
       (tables: Table[]) => {
         this.tables = tables;
-        //this.queryService.getTables();
       }
     );
   }

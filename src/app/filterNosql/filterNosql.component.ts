@@ -5,11 +5,11 @@ import { Table } from '../model/table';
 import { QueryService } from '../services/query.service';
 
 @Component({
-  selector: 'app-field',
-  templateUrl: './field.component.html',
-  styleUrl: './field.component.css',
+  selector: 'app-filter-nosql',
+  templateUrl: './filterNosql.component.html',
+  styleUrl: './filterNosql.component.css',
 })
-export class FieldComponent implements OnInit, OnDestroy {
+export class FilterNosqlComponent implements OnInit, OnDestroy {
   newField: Field = { name: '', table: '' };
   tables: Table[] = [];
   fields: Field[] = [];
@@ -17,6 +17,10 @@ export class FieldComponent implements OnInit, OnDestroy {
   isReadonly = false;
   private subscriptionTable: Subscription;
   private subscriptionField: Subscription;
+
+  filters: { field: string, value: any }[] = [];
+  filterField: string = '';
+  filterValue: any = '';
 
   constructor(private queryService: QueryService) {}
 
@@ -32,7 +36,20 @@ export class FieldComponent implements OnInit, OnDestroy {
     this.queryService.addField(this.newField);
     this.newField = { name: '', table: '' };
     this.isChecked = false;
+
+    if (this.newField.trim() !== '') {
+      this.fields.push(this.newField.trim());
+      this.newField = '';
+    }
   }
+  addFilter() {
+    if (this.filterField.trim() !== '' && this.filterValue !== '') {
+      this.filters.push({ field: this.filterField.trim(), value: this.filterValue });
+      this.filterField = '';
+      this.filterValue = '';
+    }
+  }
+
 
   ngOnInit(): void {
     this.subscriptionTable = this.queryService.tablesSubject.subscribe(

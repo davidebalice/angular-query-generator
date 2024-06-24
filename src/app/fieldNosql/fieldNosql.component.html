@@ -1,5 +1,6 @@
 <div>
-    <h3>Seleziona Campo</h3>
+  <h3>Seleziona Campo</h3>
+  <!--
     <select [(ngModel)]="newField.table">
       <option *ngFor="let table of tables" [value]="table.alias">{{ table.alias }}</option>
     </select>
@@ -7,11 +8,28 @@
     <label>
       <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange($event)" />
       Tutti i campi
-    </label>
+    </label>-->
+
+  <!-- fields.component.html -->
+  <div>
+    <label for="fieldInput">Inserisci o seleziona i campi:</label>
+
+    <input
+      [(ngModel)]="newField.name"
+      placeholder="Field name"
+      [readonly]="isReadonly"
+    />
+    <button (click)="addField()">Aggiungi</button>
+
+    <ul>
+      <li *ngFor="let field of fields">{{ field }}</li>
+    </ul>
+
     <button (click)="addField()">Aggiungi Campo</button>
     <hr />
     <div *ngFor="let field of fields">
       <p>ID: {{ field.table }}.{{ field.name }}</p>
-      <button (click)="onDelete(field.table,field.name)">delete</button>
+      <button (click)="onDelete(field.table, field.name)">delete</button>
     </div>
   </div>
+</div>

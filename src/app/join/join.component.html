@@ -9,5 +9,8 @@
     <input [(ngModel)]="newJoin.table" placeholder="Tabella">
     <input [(ngModel)]="newJoin.on" placeholder="Condizione ON">
     <button (click)="addJoin()">Aggiungi Join</button>
+    <div *ngFor="let join of joins">
+      <p>ID: {{ join.type }} {{ join.table }} {{ join.on }}</p>
+      <button (click)="onDelete(join.type,join.table,join.on)">delete</button>
+    </div>
   </div>
-  

@@ -1,5 +1,6 @@
 <div>
     <h3>Seleziona Campo</h3>
+    <!--input [(ngModel)]="newField.table" placeholder="Tabella"-->
     <select [(ngModel)]="newField.table">
       <option *ngFor="let table of tables" [value]="table.alias">{{ table.alias }}</option>
     </select>
@@ -8,6 +9,31 @@
       <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange($event)" />
       Tutti i campi
     </label>
+
+
+
+<!-- filters.component.html -->
+<div>
+  <label for="filterField">Campo di filtro:</label>
+  <input id="filterField" type="text" [(ngModel)]="filterField">
+
+  <label for="filterValue">Valore del filtro:</label>
+  <input id="filterValue" type="text" [(ngModel)]="filterValue">
+
+  <button (click)="addFilter()">Aggiungi Filtro</button>
+
+  <ul>
+    <li *ngFor="let filter of filters">{{ filter.field }}: {{ filter.value }}</li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
     <button (click)="addField()">Aggiungi Campo</button>
     <hr />
     <div *ngFor="let field of fields">

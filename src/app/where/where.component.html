@@ -8,4 +8,10 @@
 
   <input [(ngModel)]="newCondition.condition" placeholder="Condition" />
   <button (click)="addWhere()">Aggiungi Where condition</button>
+
+
+  <div *ngFor="let where of wheres">
+    <p>ID: {{ where.field }} {{ where.typeCondition }} {{ where.condition }}</p>
+    <button (click)="onDelete(where.field,where.typeCondition,where.condition)">delete</button>
+  </div>
 </div>

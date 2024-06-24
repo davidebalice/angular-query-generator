@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Field } from '../model/field';
-import { Join } from '../model/join';
-import { Order } from '../model/order';
+import { FilterNosql } from '../model/filterNosql';
+import { FieldNosql } from '../model/fieldNosql';
+import { OrderNosql } from '../model/orderNosql';
 import { Table } from '../model/table';
 import { Where } from '../model/where';
 
@@ -11,17 +11,17 @@ import { Where } from '../model/where';
 })
 export class QueryService {
   private tables: Table[] = [];
-  private fields: Field[] = [];
-  private joins: Join[] = [];
+  private fields: FieldNosql[] = [];
+  private filters: FilterNosql[] = [];
   private wheres: Where[] = [];
-  private orders: Order[] = [];
+  private orders: OrderNosql[] = [];
 
-  private querySubject = new BehaviorSubject<string>(this.getQuery());
+  private querySubject = new BehaviorSubject<string>(this.getQueryNoSql());
   tablesSubject = new BehaviorSubject<Table[]>(this.tables);
-  fieldsSubject = new BehaviorSubject<Field[]>(this.fields);
+  fieldsSubject = new BehaviorSubject<FieldNosql[]>(this.fields);
+  filtersSubject = new BehaviorSubject<FilterNosql[]>(this.filters);
   wheresSubject = new BehaviorSubject<Where[]>(this.wheres);
-  joinsSubject = new BehaviorSubject<Join[]>(this.joins);
-  ordersSubject = new BehaviorSubject<Order[]>(this.orders);
+  ordersSubject = new BehaviorSubject<OrderNosql[]>(this.orders);
   Subject: any;
 
   constructor() {}
@@ -31,7 +31,7 @@ export class QueryService {
   }
 
   private updateQuery() {
-    this.querySubject.next(this.getQuery());
+    this.querySubject.next(this.getQueryNoSql());
   }
 
   addTable(table: Table) {
@@ -53,7 +53,7 @@ export class QueryService {
     this.updateQuery();
   }
 
-  addField(field: Field) {
+  addField(field: FieldNosql) {
     this.fields.push(field);
     this.updateQuery();
   }
@@ -64,7 +64,7 @@ export class QueryService {
 
   deleteField(table: string, name: string) {
     this.fields = this.fields.filter(
-      (field) => !(field.name === name && field.table === table)
+      (field) => !(field.name === name)
     );
     this.fieldsSubject.next(this.fields);
     this.updateQuery();
@@ -88,20 +88,9 @@ export class QueryService {
     this.updateQuery();
   }
 
-  addJoin(join: Join) {
-    this.joins.push(join);
-    this.updateQuery();
-  }
+ 
 
-  deleteJoin(type: string, table: string, on: string) {
-    this.joins = this.joins.filter(
-      (join) => !(join.type === type && join.table === table && join.on === on)
-    );
-    this.joinsSubject.next(this.joins);
-    this.updateQuery();
-  }
-
-  addOrder(order: Order) {
+  addOrder(order: OrderNosql) {
     this.orders.push(order);
     this.updateQuery();
   }
@@ -114,6 +103,7 @@ export class QueryService {
     this.updateQuery();
   }
 
+  /*
   getQuery(): string {
     let query = 'SELECT ';
     query += this.fields.map((f) => `${f.table}.${f.name}`).join(', ');
@@ -154,4 +144,21 @@ export class QueryService {
       return null;
     }
   }
+*/
+
+
+getQueryNoSql(): string {
+  let query = '{';
+  if (this.fields.length > 0) {
+    query += `"fields": [${this.fields.map(field => `"${field}"`).join(', ')}], `;
+  }
+  if (this.filters.length > 0) {
+    query += `"filters": {${this.filters.map(filter => `"${filter.field}": "${filter.value}"`).join(', ')}}, `;
+  }
+  if (this.orders.length > 0) {
+    query += `"order": {${this.orders.map(order => `"${order.field}": "${order.direction}"`).join(', ')}}, `;
+  }
+  query += '}';
+  return query;
+}
 }

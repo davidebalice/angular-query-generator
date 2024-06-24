@@ -4,11 +4,11 @@ import { Order } from '../model/order';
 import { QueryService } from '../services/query.service';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css'],
+  selector: 'app-order-nosql',
+  templateUrl: './orderNosql.component.html',
+  styleUrls: ['./orderNosql.component.css'],
 })
-export class OrderComponent implements OnInit, OnDestroy {
+export class OrderNosqlComponent implements OnInit, OnDestroy {
   newOrder: Order = { field: '', direction: 'ASC' };
   orders: Order[] = [];
   private subscription: Subscription;

@@ -1,18 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Field } from '../model/field';
+import { FieldNosql } from '../model/fieldNosql';
 import { Table } from '../model/table';
-import { QueryService } from '../services/query.service';
+import { QueryService } from '../services/nosqlQuery.service';
 
 @Component({
-  selector: 'app-field',
-  templateUrl: './field.component.html',
-  styleUrl: './field.component.css',
+  selector: 'app-field-nosql',
+  templateUrl: './fieldNosql.component.html',
+  styleUrl: './fieldNosql.component.css',
 })
-export class FieldComponent implements OnInit, OnDestroy {
-  newField: Field = { name: '', table: '' };
+export class FieldNosqlComponent implements OnInit, OnDestroy {
+  newField: FieldNosql = { name: '' };
   tables: Table[] = [];
-  fields: Field[] = [];
+  fields: FieldNosql[] = [];
   isChecked = false;
   isReadonly = false;
   private subscriptionTable: Subscription;
@@ -22,17 +22,20 @@ export class FieldComponent implements OnInit, OnDestroy {
 
   refreshFields() {
     this.subscriptionField = this.queryService.fieldsSubject.subscribe(
-      (fields: Field[]) => {
+      (fields: FieldNosql[]) => {
         this.fields = fields;
       }
     );
   }
 
+
   addField() {
     this.queryService.addField(this.newField);
-    this.newField = { name: '', table: '' };
-    this.isChecked = false;
+    this.newField = { name: '' };
+    //this.isChecked = false;
   }
+
+
 
   ngOnInit(): void {
     this.subscriptionTable = this.queryService.tablesSubject.subscribe(

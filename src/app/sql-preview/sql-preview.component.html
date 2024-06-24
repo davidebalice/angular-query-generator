@@ -1,5 +1,5 @@
 <div>
   <h3>Preview Query SQL</h3>
-    <pre>{{ query }}</pre>
-  </div>
-  
+  <p *ngIf="!query" class="error">{{ error }}</p>
+  <pre>{{ query }}</pre>
+</div>
