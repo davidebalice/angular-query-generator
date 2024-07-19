@@ -28,6 +28,31 @@ h1 {
   gap: 10px;
 }
 
-.buttonContainer a{
-  cursor:pointer;
+.buttonContainer a {
+  cursor: pointer;
+}
+
+.tab-item {
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  margin-right: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.tab-item a {
+  border-bottom: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+}
+
+.tab-icon {
+  font-size: 20px;
 }

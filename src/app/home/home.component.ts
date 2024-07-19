@@ -4,24 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  tab: string = "table";
-  constructor(private router: Router) { }
+  tab: string = 'table';
+  selectedTab: string = 'table';
 
-  ngOnInit() {
-  }
+  constructor(private router: Router) {}
 
-  onLoadServers(){
-    this.router.navigate(['/nosql']);
-  }
+  ngOnInit() {}
 
-  onLoadServer(id: number){
-    this.router.navigate(['/nosql', id, 'edit' ],{queryParams: {allowEdit: '1'}});
-  }
-  
-  onSetTab(tab: string){
+  onSetTab(tab: string) {
     this.tab = tab;
+    this.selectedTab = tab;
   }
 }
