@@ -1,0 +1,31 @@
+.tab-item {
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #fff;
+  margin-right: 4px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+.tab-item a {
+  border-bottom: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  color: #333;
+}
+
+.tab-icon {
+  font-size: 20px;
+}
+
+.tab-item a:hover {
+  color: #333;
+}

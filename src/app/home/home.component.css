@@ -1,7 +1,7 @@
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.row {
+  max-width: 870px;
+  margin-left: 0px;
+  margin-bottom: 20px;
 }
 
 .selectors {

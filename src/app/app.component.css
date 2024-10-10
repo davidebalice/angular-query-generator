@@ -1,3 +1,33 @@
 .container {
   margin-top: 30px;
+  display: flex;
+  text-align: left;
+  gap: 35px;
+}
+
+.container div:nth-child(1) {
+  width: 170px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.container div:nth-child(2) {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .container div {
+    flex: 1;
+    width: 100%;
+  }
+
+  .container div:nth-child(1) {
+    height: auto;
+  }
 }

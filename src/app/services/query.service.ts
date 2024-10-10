@@ -26,6 +26,65 @@ export class QueryService {
 
   constructor() {}
 
+  private examples = {
+    example1: {
+      tables: [
+        { name: 'users', alias: 'u' },
+        { name: 'orders', alias: 'o' },
+      ],
+      fields: [
+        { table: 'users', name: 'id' },
+        { table: 'users', name: 'name' },
+        { table: 'orders', name: 'total' },
+      ],
+      joins: [
+        { type: 'INNER', table: 'orders', on: 'users.id = orders.user_id' },
+      ],
+      wheres: [
+        { field: 'users.name', typeCondition: '=', condition: '"John Doe"' },
+      ],
+      orders: [{ field: 'users.id', direction: 'ASC' }],
+    },
+    example2: {
+      tables: [{ name: 'products', alias: 'p' }],
+      fields: [
+        { table: 'products', name: 'id' },
+        { table: 'products', name: 'name' },
+        { table: 'products', name: 'price' },
+      ],
+      joins: [],
+      wheres: [
+        { field: 'products.price', typeCondition: '>', condition: '100' },
+      ],
+      orders: [{ field: 'products.name', direction: 'DESC' }],
+    },
+  };
+
+  getExamples() {
+    return this.examples;
+  }
+
+  populateExample(exampleKey: string) {
+    const example = this.examples[exampleKey];
+    if (example) {
+      this.tables = example.tables;
+      this.fields = example.fields;
+      this.joins = example.joins;
+      this.wheres = example.wheres;
+      this.orders = example.orders;
+
+      this.tablesSubject.next(this.tables);
+      this.fieldsSubject.next(this.fields);
+      this.joinsSubject.next(this.joins);
+      this.wheresSubject.next(this.wheres);
+      this.ordersSubject.next(this.orders);
+
+      this.updateQuery();
+    } else {
+      console.error('Example not found:', exampleKey);
+    }
+  }
+
   getQueryObservable() {
     return this.querySubject.asObservable();
   }
@@ -127,7 +186,9 @@ export class QueryService {
       query += '\n';
       query +=
         '' +
-        this.joins.map((j) => `${j.type} JOIN ${j.table} ON ${j.on}`).join('\n');
+        this.joins
+          .map((j) => `${j.type} JOIN ${j.table} ON ${j.on}`)
+          .join('\n');
     }
 
     if (this.wheres.length > 0) {

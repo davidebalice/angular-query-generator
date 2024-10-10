@@ -15,6 +15,9 @@ import { TableComponent } from './table/table.component';
 import { WhereComponent } from './where/where.component';
 //import { QueryGeneratorService } from './services/query-generator.service';
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './header/header.component';
+import { InfoComponent } from './info/info.component';
+import { SideComponent } from './side/side.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +36,9 @@ const appRoutes: Routes = [
     WhereComponent,
     OrderComponent,
     SqlPreviewComponent,
+    HeaderComponent,
+    InfoComponent,
+    SideComponent,
   ],
   //providers: [QueryGeneratorService],
   imports: [

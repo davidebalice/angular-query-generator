@@ -1,46 +1,42 @@
-<div class="container">
-  <h2>SQL Query Generator</h2>
+<div class="row">
+  <ul class="nav nav-tabs">
+    <li class="tab-item" [ngClass]="{ active: selectedTab === 'table' }">
+      <a (click)="onSetTab('table')">
+        <mat-icon class="tab-icon">storage</mat-icon>
+        table
+      </a>
+    </li>
+    <li class="tab-item" [ngClass]="{ active: selectedTab === 'field' }">
+      <a (click)="onSetTab('field')">
+        <mat-icon class="tab-icon">text_fields</mat-icon>
+        field
+      </a>
+    </li>
+    <li class="tab-item" [ngClass]="{ active: selectedTab === 'join' }">
+      <a (click)="onSetTab('join')">
+        <mat-icon class="tab-icon">compare_arrows</mat-icon>join</a
+      >
+    </li>
+    <li class="tab-item" [ngClass]="{ active: selectedTab === 'where' }">
+      <a (click)="onSetTab('where')">
+        <mat-icon class="tab-icon">search</mat-icon>where</a
+      >
+    </li>
+    <li class="tab-item" [ngClass]="{ active: selectedTab === 'order' }">
+      <a (click)="onSetTab('order')">
+        <mat-icon class="tab-icon">text_rotate_vertical</mat-icon>order</a
+      >
+    </li>
+  </ul>
+</div>
 
-  <div class="row">
-    <ul class="nav nav-tabs">
-      <li class="tab-item" [ngClass]="{ active: selectedTab === 'table' }">
-        <a (click)="onSetTab('table')">
-          <mat-icon class="tab-icon">storage</mat-icon>
-          table
-        </a>
-      </li>
-      <li class="tab-item" [ngClass]="{ active: selectedTab === 'field' }">
-        <a (click)="onSetTab('field')">
-          <mat-icon class="tab-icon">text_fields</mat-icon>
-          field
-        </a>
-      </li>
-      <li class="tab-item" [ngClass]="{ active: selectedTab === 'join' }">
-        <a (click)="onSetTab('join')">
-          <mat-icon class="tab-icon">compare_arrows</mat-icon>join</a
-        >
-      </li>
-      <li class="tab-item" [ngClass]="{ active: selectedTab === 'where' }">
-        <a (click)="onSetTab('where')">
-          <mat-icon class="tab-icon">search</mat-icon>where</a
-        >
-      </li>
-      <li class="tab-item" [ngClass]="{ active: selectedTab === 'order' }">
-        <a (click)="onSetTab('order')">
-          <mat-icon class="tab-icon">text_rotate_vertical</mat-icon>order</a
-        >
-      </li>
-    </ul>
-  </div>
-
-  <div class="selectors">
-    <app-table *ngIf="tab === 'table'"></app-table>
-    <app-field *ngIf="tab === 'field'"></app-field>
-    <app-join *ngIf="tab === 'join'"></app-join>
-    <app-where *ngIf="tab === 'where'"></app-where>
-    <app-order *ngIf="tab === 'order'"></app-order>
-  </div>
-  <div class="preview">
-    <app-sql-preview></app-sql-preview>
-  </div>
+<div class="selectors">
+  <app-table *ngIf="tab === 'table'"></app-table>
+  <app-field *ngIf="tab === 'field'"></app-field>
+  <app-join *ngIf="tab === 'join'"></app-join>
+  <app-where *ngIf="tab === 'where'"></app-where>
+  <app-order *ngIf="tab === 'order'"></app-order>
+</div>
+<div class="preview">
+  <app-sql-preview></app-sql-preview>
 </div>

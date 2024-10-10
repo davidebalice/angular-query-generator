@@ -1,0 +1,22 @@
+.info {
+  width: 100%;
+  max-width: 1072px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  height: 90px;
+  background: white;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.info b {
+  font-size: 19px;
+}
+
+.info img {
+  width: 70px;
+}

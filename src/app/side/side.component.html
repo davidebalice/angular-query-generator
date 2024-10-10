@@ -1,0 +1,10 @@
+<p class="tab-item">
+  <a>
+    <mat-icon class="tab-icon">storage</mat-icon>
+    examples
+  </a>
+
+  <button *ngFor="let example of examples" (click)="populateExample(example)">
+    {{ example }}
+  </button>
+</p>
