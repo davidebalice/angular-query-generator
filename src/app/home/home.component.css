@@ -1,14 +1,6 @@
 .row {
   max-width: 870px;
   margin-left: 0px;
-  margin-bottom: 20px;
-}
-
-.selectors {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
 }
 
 .preview {
@@ -16,6 +8,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
+  border-radius: 8px;
 }
 
 h1 {
@@ -51,8 +44,14 @@ h1 {
   align-items: center;
   gap: 4px;
   font-size: 15px;
+  color: #333;
 }
 
 .tab-icon {
   font-size: 20px;
+  color: #333;
+}
+
+.active a{
+  color: #c3012f !important;
 }

@@ -1,3 +1,41 @@
-.error{
-    color:red
+.error {
+  color: #c3012f;
+  margin-top: 12px;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+pre {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px 20px;
+  color: #777;
+}
+
+.topPreview {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copy {
+  display: flex;
+  border: none;
+  gap: 6px;
+  align-items: center;
+  background-color: white;
+  padding: 4px !important;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.copy:hover {
+  background-color: #f9f9f9;
+}
+
+.copy .mat-icon {
+  font-size: 16px;
+  margin-top:6px;
 }

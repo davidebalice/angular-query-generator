@@ -2,9 +2,91 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-image: url("./assets/bgBody.jpg");
   background-size: cover;
+}
+
+.sectionContainer {
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-top: -1px;
+}
+
+.elementContainer {
+  width: 100%;
+  display: flex;
+  margin-top: 12px;
+  justify-content: space-between;
+}
+
+.elementContainer div:first-child {
+  display: flex;
+  gap: 6px;
+}
+
+.elementContainer div:first-child p:first-child {
+  width: 140px;
+}
+
+.elementContainer div:first-child p:nth-child(2) {
+  width: 300px;
+}
+
+.elementContainer .mat-icon {
+  color: #c3012f;
+  cursor: pointer;
+}
+
+.elementContainer .mat-icon:hover {
+  color: #d22850;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #ddd;
+  color: #c3012f;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.notFound {
+  margin-top: 6px;
+  margin-bottom: 20px;
+  color: #c3012f;
+}
+
+.input {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  padding: 8px 12px;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 6px;
+  margin-top: 30px;
+}
+
+.inputContainer button {
+  width: 120px;
+  border: none;
+  background-color: #c3012f;
+  color: #fff;
+}
+
+.inputContainer button:hover {
+  background-color: #d22850;
+}
+
+.nav-tabs {
+  border: none;
 }

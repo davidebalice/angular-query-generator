@@ -11,6 +11,7 @@ export class SqlPreviewComponent implements OnInit, OnDestroy {
   query: string = '';
   error: string = 'Insert at least one table and one field';
   private querySubscription: Subscription;
+  isCopied: boolean = false;
 
   constructor(private queryService: QueryService) {}
 
@@ -25,6 +26,22 @@ export class SqlPreviewComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.querySubscription) {
       this.querySubscription.unsubscribe();
+    }
+  }
+
+  copyToClipboard() {
+    if (this.query) {
+      navigator.clipboard
+        .writeText(this.query)
+        .then(() => {
+          this.isCopied = true;
+          setTimeout(() => {
+            this.isCopied = false;
+          }, 2000);
+        })
+        .catch((err) => {
+          console.error('Error: ', err);
+        });
     }
   }
 }

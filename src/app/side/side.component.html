@@ -1,10 +1,12 @@
-<p class="tab-item">
+<div class="tab-item">
   <a>
     <mat-icon class="tab-icon">storage</mat-icon>
     examples
   </a>
-
-  <button *ngFor="let example of examples" (click)="populateExample(example)">
+</div>
+<ul class="side-item">
+  <li *ngFor="let example of examples" (click)="populateExample(example)">
     {{ example }}
-  </button>
-</p>
+  </li>
+  <li (click)="reset()">reset</li>
+</ul>

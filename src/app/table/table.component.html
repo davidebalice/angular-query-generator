@@ -1,12 +1,42 @@
-<div>
-  <h3>Seleziona Tabella</h3>
-  <input [(ngModel)]="newTable.name" placeholder="Nome Tabella" />
-  <input [(ngModel)]="newTable.alias" placeholder="Alias Tabella" />
-  <button (click)="addTable()">Aggiungi Tabella</button>
+<div class="sectionContainer">
+  <div class="inputContainer">
+    <input [(ngModel)]="newTable.name" placeholder="Table name" class="input" />
+    <input
+      [(ngModel)]="newTable.alias"
+      placeholder="Table Alias"
+      class="input"
+    />
+    <button (click)="addTable()">Add Table</button>
+  </div>
   <hr />
+  <b class="title">Tables</b>
+  <br />
+  <div *ngIf="tables && tables?.length === 0" class="notFound">
+    Tables not found
+  </div>
+
+  <div
+    class="elementContainer borderBottom"
+    *ngIf="tables && tables?.length >= 1"
+  >
+    <div>
+      <p>Table alias</p>
+      <p>Table name</p>
+    </div>
+    <div>
+      <p>Delete</p>
+    </div>
+  </div>
+
   <div *ngFor="let table of tables">
-    <p>ID: {{ table.alias }}</p>
-    <p>Name: {{ table.name }}</p>
-    <button (click)="onDelete(table.name)">delete</button>
+    <div class="elementContainer">
+      <div>
+        <p>{{ table.alias }}</p>
+        <p>{{ table.name }}</p>
+      </div>
+      <mat-icon class="tab-icon" (click)="onDelete(table.name)"
+        >delete</mat-icon
+      >
+    </div>
   </div>
 </div>

@@ -24,9 +24,11 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   addTable() {
-    this.queryService.addTable(this.newTable);
-    this.newTable = { name: '', alias: '' };
-    this.queryService.getTables();
+    if (this.newTable.name != '') {
+      this.queryService.addTable(this.newTable);
+      this.newTable = { name: '', alias: '' };
+      this.queryService.getTables();
+    }
   }
 
   onDelete(name: string) {

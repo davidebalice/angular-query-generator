@@ -29,14 +29,11 @@
     </li>
   </ul>
 </div>
-
-<div class="selectors">
-  <app-table *ngIf="tab === 'table'"></app-table>
-  <app-field *ngIf="tab === 'field'"></app-field>
-  <app-join *ngIf="tab === 'join'"></app-join>
-  <app-where *ngIf="tab === 'where'"></app-where>
-  <app-order *ngIf="tab === 'order'"></app-order>
-</div>
+<app-table *ngIf="tab === 'table'"></app-table>
+<app-field *ngIf="tab === 'field'"></app-field>
+<app-join *ngIf="tab === 'join'"></app-join>
+<app-where *ngIf="tab === 'where'"></app-where>
+<app-order *ngIf="tab === 'order'"></app-order>
 <div class="preview">
   <app-sql-preview></app-sql-preview>
 </div>

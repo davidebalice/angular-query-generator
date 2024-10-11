@@ -1,5 +1,9 @@
 <div>
-  <h3>Preview Query SQL</h3>
-  <p *ngIf="!query" class="error">{{ error }}</p>
-  <pre>{{ query }}</pre>
+  <div class="topPreview">
+    <h3>SQL code</h3>
+    <button (click)="copyToClipboard()" class="copy">
+      <mat-icon>content_copy</mat-icon> {{ isCopied ? 'Copied' : 'Copy' }}
+    </button>
+  </div>
+  <pre><p *ngIf="!query" class="error">{{ error }}</p>{{ query }}</pre>
 </div>

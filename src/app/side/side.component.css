@@ -29,3 +29,18 @@
 .tab-item a:hover {
   color: #333;
 }
+
+.side-item {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.side-item li {
+  padding: 8px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.side-item li:hover {
+  background-color: #f9f9f9;
+}

@@ -18,4 +18,8 @@ export class SideComponent {
   populateExample(example: string) {
     this.queryService.populateExample(example);
   }
+
+  reset() {
+    this.queryService.reset();
+  }
 }
