@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
 import { InfoComponent } from './info/info.component';
 import { SideComponent } from './side/side.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     InfoComponent,
     SideComponent,
+    FooterComponent,
   ],
   //providers: [QueryGeneratorService],
   imports: [

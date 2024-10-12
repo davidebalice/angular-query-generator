@@ -1,16 +1,43 @@
-<div>
-    <h3>Aggiungi Join</h3>
-    <select [(ngModel)]="newJoin.type">
+<div class="sectionContainer">
+  <div class="inputContainer">
+    <select [(ngModel)]="newJoin.type" class="input">
       <option value="INNER">INNER</option>
       <option value="LEFT">LEFT</option>
       <option value="RIGHT">RIGHT</option>
       <option value="FULL">FULL</option>
     </select>
-    <input [(ngModel)]="newJoin.table" placeholder="Tabella">
-    <input [(ngModel)]="newJoin.on" placeholder="Condizione ON">
-    <button (click)="addJoin()">Aggiungi Join</button>
-    <div *ngFor="let join of joins">
-      <p>ID: {{ join.type }} {{ join.table }} {{ join.on }}</p>
-      <button (click)="onDelete(join.type,join.table,join.on)">delete</button>
+    <input [(ngModel)]="newJoin.table" placeholder="Tabella" class="input" />
+    <input [(ngModel)]="newJoin.on" placeholder="Condizione ON" class="input" />
+    <button (click)="addJoin()">Add Join</button>
+  </div>
+
+  <hr />
+  <b class="title">Joins</b>
+  <br />
+  <div *ngIf="joins && joins?.length === 0" class="notFound">
+    Joins not found
+  </div>
+
+  <div
+    class="elementContainer borderBottom"
+    *ngIf="joins && joins?.length >= 1"
+  >
+    <div>
+      <p>Join</p>
+    </div>
+    <div>
+      <p>Delete</p>
     </div>
   </div>
+
+  <div *ngFor="let join of joins">
+    <div class="elementContainer">
+      <p>{{ join.type }} {{ join.table }} {{ join.on }}</p>
+      <mat-icon
+        class="tab-icon"
+        (click)="onDelete(join.type, join.table, join.on)"
+        >delete</mat-icon
+      >
+    </div>
+  </div>
+</div>

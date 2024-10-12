@@ -14,6 +14,8 @@ body {
   border: 1px solid #ddd;
   width: 100%;
   padding: 20px;
+  background: white;
+  box-shadow: 0px 2px 2px 0px rgb(0, 0, 0, 0.26);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   margin-top: -1px;
@@ -32,7 +34,7 @@ body {
 }
 
 .elementContainer div:first-child p:first-child {
-  width: 140px;
+  width: 200px;
 }
 
 .elementContainer div:first-child p:nth-child(2) {
@@ -89,4 +91,20 @@ body {
 
 .nav-tabs {
   border: none;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.checkboxContainer span {
+  margin-top: 4px;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
 }

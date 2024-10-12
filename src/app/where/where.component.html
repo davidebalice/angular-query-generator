@@ -1,17 +1,47 @@
-<div>
-  <h3>Aggiungi where</h3>
-  <input [(ngModel)]="newCondition.field" placeholder="Field" />
-  <select [(ngModel)]="newCondition.typeCondition">
-    <option value="=">=</option>
-    <option value="LIKE">LIKE</option>
-  </select>
+<div class="sectionContainer">
+  <div class="inputContainer">
+    <input [(ngModel)]="newCondition.field" placeholder="Field" class="input" />
+    <select [(ngModel)]="newCondition.typeCondition" class="input">
+      <option value="=">=</option>
+      <option value="LIKE">LIKE</option>
+    </select>
 
-  <input [(ngModel)]="newCondition.condition" placeholder="Condition" />
-  <button (click)="addWhere()">Aggiungi Where condition</button>
+    <input
+      [(ngModel)]="newCondition.condition"
+      placeholder="Condition"
+      class="input"
+    />
+    <button (click)="addWhere()">Add Where</button>
+  </div>
 
+  <hr />
+  <b class="title">Where conditions</b>
+  <br />
+  <div *ngIf="wheres && wheres?.length === 0" class="notFound">
+    Wheres not found
+  </div>
+
+  <div
+    class="elementContainer borderBottom"
+    *ngIf="wheres && wheres?.length >= 1"
+  >
+    <div>
+      <p>Where conditions</p>
+    </div>
+    <div>
+      <p>Delete</p>
+    </div>
+  </div>
 
   <div *ngFor="let where of wheres">
-    <p>ID: {{ where.field }} {{ where.typeCondition }} {{ where.condition }}</p>
-    <button (click)="onDelete(where.field,where.typeCondition,where.condition)">delete</button>
+    <div class="elementContainer">
+      <p>{{ where.field }} {{ where.typeCondition }} {{ where.condition }}</p>
+
+      <mat-icon
+        class="tab-icon"
+        (click)="onDelete(where.field, where.typeCondition, where.condition)"
+        >delete</mat-icon
+      >
+    </div>
   </div>
 </div>

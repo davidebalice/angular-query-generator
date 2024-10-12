@@ -1,13 +1,41 @@
-<div>
-  <h3>Aggiungi Ordinamento</h3>
-  <input [(ngModel)]="newOrder.field" placeholder="Field" />
-  <select [(ngModel)]="newOrder.direction">
-    <option value="ASC">ASC</option>
-    <option value="DESC">DESC</option>
-  </select>
-  <button (click)="addOrder()">Aggiungi Ordinamento</button>
+<div class="sectionContainer">
+  <div class="inputContainer">
+    <input [(ngModel)]="newOrder.field" placeholder="Field" class="input" />
+    <select [(ngModel)]="newOrder.direction" class="input">
+      <option value="ASC">ASC</option>
+      <option value="DESC">DESC</option>
+    </select>
+    <button (click)="addOrder()">Add Order</button>
+  </div>
+
+  <hr />
+  <b class="title">Orders</b>
+  <br />
+
+  <div *ngIf="orders && orders?.length === 0" class="notFound">
+    Orders not found
+  </div>
+
+  <div
+    class="elementContainer borderBottom"
+    *ngIf="orders && orders?.length >= 1"
+  >
+    <div>
+      <p>Orders</p>
+    </div>
+    <div>
+      <p>Delete</p>
+    </div>
+  </div>
+
   <div *ngFor="let order of orders">
-    <p>ID: {{ order.field }} {{ order.direction }}</p>
-    <button (click)="onDelete(order.field,order.direction)">delete</button>
+    <div class="elementContainer">
+      <p>{{ order.field }} {{ order.direction }}</p>
+      <mat-icon
+        class="tab-icon"
+        (click)="onDelete(order.field, order.direction)"
+        >delete</mat-icon
+      >
+    </div>
   </div>
 </div>

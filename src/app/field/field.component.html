@@ -1,17 +1,56 @@
-<div>
-    <h3>Seleziona Campo</h3>
-    <select [(ngModel)]="newField.table">
-      <option *ngFor="let table of tables" [value]="table.alias">{{ table.alias }}</option>
+<div class="sectionContainer">
+  <div class="inputContainer">
+    <select
+      [(ngModel)]="newField.table"
+      class="input"
+      [disabled]="tables.length == 0"
+    >
+      <option *ngFor="let table of tables" [value]="table.alias">
+        {{ table.alias }}
+      </option>
     </select>
-    <input [(ngModel)]="newField.name" placeholder="Field name" [readonly]="isReadonly">
-    <label>
-      <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckboxChange($event)" />
-      Tutti i campi
+    <input
+      [(ngModel)]="newField.name"
+      placeholder="Field name"
+      [readonly]="isReadonly"
+      class="input"
+    />
+    <label class="checkboxContainer">
+      <input
+        type="checkbox"
+        class="checkbox"
+        [(ngModel)]="isChecked"
+        (change)="onCheckboxChange($event)"
+      />
+      <span>All fields</span>
     </label>
-    <button (click)="addField()">Aggiungi Campo</button>
-    <hr />
-    <div *ngFor="let field of fields">
-      <p>ID: {{ field.table }}.{{ field.name }}</p>
-      <button (click)="onDelete(field.table,field.name)">delete</button>
+    <button (click)="addField()">Add Field</button>
+  </div>
+  <hr />
+  <b class="title">Fields</b>
+  <br />
+  <div *ngIf="fields && fields?.length === 0" class="notFound">
+    Fields not found
+  </div>
+
+  <div
+    class="elementContainer borderBottom"
+    *ngIf="fields && fields?.length >= 1"
+  >
+    <div>
+      <p>Field name</p>
+    </div>
+    <div>
+      <p>Delete</p>
     </div>
   </div>
+
+  <div *ngFor="let field of fields">
+    <div class="elementContainer">
+      <p>{{ field.table }}.{{ field.name }}</p>
+      <mat-icon class="tab-icon" (click)="onDelete(field.table, field.name)"
+        >delete</mat-icon
+      >
+    </div>
+  </div>
+</div>

@@ -20,8 +20,8 @@
     *ngIf="tables && tables?.length >= 1"
   >
     <div>
-      <p>Table alias</p>
       <p>Table name</p>
+      <p>Table alias</p>
     </div>
     <div>
       <p>Delete</p>
@@ -31,8 +31,8 @@
   <div *ngFor="let table of tables">
     <div class="elementContainer">
       <div>
-        <p>{{ table.alias }}</p>
         <p>{{ table.name }}</p>
+        <p>{{ table.alias }}</p>
       </div>
       <mat-icon class="tab-icon" (click)="onDelete(table.name)"
         >delete</mat-icon
